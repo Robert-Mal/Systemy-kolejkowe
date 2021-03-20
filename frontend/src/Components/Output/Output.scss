@@ -1,0 +1,28 @@
+.output {
+    &__label {
+        font-size: 1.5rem;
+        font-weight: 3600;
+        margin-bottom: .5rem;
+    }
+
+    &__output{
+        max-width: 25rem;
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #C8C8C8;
+        border-radius: .5rem;
+        outline: none;
+        margin-bottom: 1.5rem;
+
+    }
+
+    span{
+        font-weight: 600;
+        font-size: 1.7rem;
+
+        p{
+            display: inline-block;
+            text-decoration: overline;
+        }
+    }
+}
