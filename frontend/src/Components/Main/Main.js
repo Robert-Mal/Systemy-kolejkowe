@@ -77,40 +77,40 @@ const Main = () => {
           <Output val={state.outputVal[1]}>
             Średnia długość kolejki{' '}
             <span>
-              (<p>v</p>)
+              (<span>v</span>)
             </span>
           </Output>
           <Output val={state.outputVal[2]}>
             Średnia liczba zgłoszeń w systemie{' '}
             <span>
-              (<p>n</p>)
+              (<span>n</span>)
             </span>
           </Output>
           <Output val={state.outputVal[3]}>
             Średnia liczba zgłoszeń w obsłudze{' '}
             <span>
-              (<p>m</p>
+              (<span>m</span>
               <sub>0</sub>)
             </span>
           </Output>
           <Output val={state.outputVal[4]}>
             Średni czas oczekiwania zgłoszenia w kolejce{' '}
             <span>
-              (<p>t</p>
+              (<span>t</span>
               <sub>t</sub>)
             </span>
           </Output>
           <Output val={state.outputVal[5]}>
             Średni czas przesycania zgłoszenia w systemie{' '}
             <span>
-              (<p>t</p>
+              (<span>t</span>
               <sub>s</sub>)
             </span>
           </Output>
           <Output val={state.outputVal[6]}>
             Średnia liczba nie zajętych kanałów obsługi{' '}
             <span>
-              (<p>m</p>
+              (<span>m</span>
               <sub>nz</sub>)
             </span>
           </Output>
