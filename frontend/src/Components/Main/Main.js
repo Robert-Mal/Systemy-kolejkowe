@@ -17,7 +17,7 @@ const Main = () => {
   };
 
   const calculate = () => {
-    let url = 'http://127.0.0.1:8080/api/system/get?';
+    let url = 'https://systemy-kolejkowe.herokuapp.com/api/system/get?';
     for (const value in state.inputVal) {
       url += `${value}=${state.inputVal[value]}&`;
     }
