@@ -5,10 +5,10 @@ import './Input.scss';
 const Input = props => {
   return (
     <div className="input">
-      <label className="input__label" for={props.name}>
+      <label className="input__label">
         {props.children}
+        <input className="input__input" type="text" id={props.name} onBlur={props.blur} />
       </label>
-      <input className="input__input" type="text" id={props.name} onBlur={props.blur} />
     </div>
   );
 };
