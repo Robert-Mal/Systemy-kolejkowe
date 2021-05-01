@@ -2,13 +2,14 @@ package com.example.systemyKolejkowe.dto;
 
 public class QueuingSystemDto {
 
-    private float probability0, averageV, averageN, averageM0, averageTt, averageTs, averageMnz, functionM;
+    private float probability0, averageV, averageN, averageM0, averageTt, averageTs, averageMnz;
+    private String error;
 
     public QueuingSystemDto() {
     }
 
     public QueuingSystemDto(float probability0, float averageV, float averageN, float averageM0, float averageTt,
-                            float averageTs, float averageMnz, float functionM) {
+                            float averageTs, float averageMnz, String error) {
         this.probability0 = probability0;
         this.averageV = averageV;
         this.averageN = averageN;
@@ -16,7 +17,7 @@ public class QueuingSystemDto {
         this.averageTt = averageTt;
         this.averageTs = averageTs;
         this.averageMnz = averageMnz;
-        this.functionM = functionM;
+        this.error = error;
     }
 
     public float getProbability0() {
@@ -47,7 +48,5 @@ public class QueuingSystemDto {
         return averageMnz;
     }
 
-    public float getFunctionM() {
-        return functionM;
-    }
+    public String getError() { return error;}
 }

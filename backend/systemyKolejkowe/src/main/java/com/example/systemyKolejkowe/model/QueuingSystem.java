@@ -1,21 +1,20 @@
 package com.example.systemyKolejkowe.model;
 
 public class QueuingSystem {
-    private float lambda, mu, c1, c2;
+    private float lambda, mu;
     private int m;
-    private float rho, probability0, averageV, averageN, averageM0, averageTt, averageTs, averageMnz, functionM;
+    private float rho, probability0, averageV, averageN, averageM0, averageTt, averageTs, averageMnz;
+    private String error;
 
     public QueuingSystem() {
     }
 
-    public QueuingSystem(float lambda, float mu, int m, float c1, float c2) {
+    public QueuingSystem(float lambda, float mu, int m) {
         if (m >= 1) {
             if (lambda < (m * mu)) {
                 if (((lambda / mu) / m) < 1) {
                     this.lambda = lambda;
                     this.mu = mu;
-                    this.c1 = c1;
-                    this.c2 = c2;
                     this.m = m;
                     this.rho = calcRho();
                     this.probability0 = calcProbability(0);
@@ -25,19 +24,21 @@ public class QueuingSystem {
                     this.averageM0 = calcAverageM0();
                     this.averageTs = calcAverageTs();
                     this.averageMnz = calcAverageMnz();
-                    this.functionM = calcFunctionM();
+                    this.error = "";
+                } else {
+                    this.error = "Błąd: ((lambda / mu) / m) jest większa od 1";
                 }
+            } else {
+                this.error = "Błąd: lambda jest większa od m * mu";
             }
+        } else {
+            this.error = "Błąd: m jest mniejsze od 1";
         }
     }
 
     public float getLambda() { return lambda; }
 
     public float getMu() { return mu; }
-
-    public float getC1() { return c1; }
-
-    public float getC2() { return c2; }
 
     public float getM() { return m; }
 
@@ -57,7 +58,7 @@ public class QueuingSystem {
 
     public float getAverageMnz() { return averageMnz; }
 
-    public float getFunctionM() { return functionM; }
+    public String getError() { return error; }
 
     private int factorial(int n) {
         int j = 1;
@@ -105,6 +106,4 @@ public class QueuingSystem {
     private float calcAverageTs() { return averageN / lambda; }
 
     private float calcAverageMnz() { return m - rho; }
-
-    private float calcFunctionM() { return c1 * averageV + c2 * averageMnz; }
 }

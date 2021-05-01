@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 public class QueuingSystemServiceImpl implements QueuingSystemService {
 
     @Override
-    public QueuingSystemDto getQueuingSystem(float lambda, float mu, int m, float c1, float c2) {
+    public QueuingSystemDto getQueuingSystem(float lambda, float mu, int m) {
 
-        QueuingSystem queuingSystem = new QueuingSystem(lambda, mu, m, c1, c2);
+        QueuingSystem queuingSystem = new QueuingSystem(lambda, mu, m);
 
         return new QueuingSystemDto(
                 queuingSystem.getProbability0(), queuingSystem.getAverageV(), queuingSystem.getAverageN(),
                 queuingSystem.getAverageM0(), queuingSystem.getAverageTt(), queuingSystem.getAverageTs(),
-                queuingSystem.getAverageMnz(), queuingSystem.getFunctionM()
+                queuingSystem.getAverageMnz(), queuingSystem.getError()
         );
     }
 }

@@ -13,18 +13,14 @@ public class QueuingSystemApiController {
     @Autowired
     QueuingSystemService queuingSystemService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "/system/get", method = RequestMethod.GET)
     public ResponseEntity<QueuingSystemDto> testDocument(@RequestParam(value = "lambda") float lambda,
                                              @RequestParam(value = "mu") float mu,
-                                             @RequestParam(value = "m") int m,
-                                             @RequestParam(value = "c1") float c1,
-                                             @RequestParam(value = "c2") float c2) {
+                                             @RequestParam(value = "m") int m) {
 
-        QueuingSystemDto queuingSystemDto = queuingSystemService.getQueuingSystem(lambda, mu, m, c1, c2);
+        QueuingSystemDto queuingSystemDto = queuingSystemService.getQueuingSystem(lambda, mu, m);
 
-        //return new ResponseEntity<>(queuingSystemDto, HttpStatus.OK);
         return ResponseEntity.ok(queuingSystemDto);
     }
-
 }
