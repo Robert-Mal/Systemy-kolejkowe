@@ -26,10 +26,10 @@ public class QueuingSystem {
                     this.averageMnz = calcAverageMnz();
                     this.error = "";
                 } else {
-                    this.error = "Błąd: ((lambda / mu) / m) jest większa od 1";
+                    this.error = "Błąd: ((lambda / μ) / m) jest większa od 1";
                 }
             } else {
-                this.error = "Błąd: lambda jest większa od m * mu";
+                this.error = "Błąd: lambda jest większa od m * μ";
             }
         } else {
             this.error = "Błąd: m jest mniejsze od 1";
