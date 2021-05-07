@@ -7,7 +7,7 @@ const Input = props => {
     <div className="input">
       <label className="input__label">
         {props.children}
-        <input className="input__input" type="text" id={props.name} onBlur={props.blur} />
+        <input className="input__input" type="text" id={props.name} onBlur={props.blur} required />
       </label>
     </div>
   );

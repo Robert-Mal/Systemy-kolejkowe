@@ -16,7 +16,8 @@ const Main = () => {
     });
   };
 
-  const calculate = () => {
+  const calculate = e => {
+    e.preventDefault();
     let url = 'https://systemy-kolejkowe.herokuapp.com/api/system/get?';
     for (const value in state.inputVal) {
       url += `${value}=${state.inputVal[value]}&`;
@@ -38,7 +39,7 @@ const Main = () => {
 
   return (
     <main className="main">
-      <div className="main__content">
+      <form className="main__content" onSubmit={calculate}>
         <h2 className="main__heading">Dane wejściowe</h2>
         <Input name="lambda" blur={addValue}>
           Liczba zgłoszeń napływających w jednostce czasu <span>(λ)</span>
@@ -49,22 +50,10 @@ const Main = () => {
         <Input name="m" blur={addValue}>
           Liczba dostępnych kanałów obsługi <span>(m)</span>
         </Input>
-        <Input name="c1" blur={addValue}>
-          Nie wiadomo{' '}
-          <span>
-            (C<sub>1</sub>)
-          </span>
-        </Input>
-        <Input name="c2" blur={addValue}>
-          Nie wiadomo{' '}
-          <span>
-            (C<sub>2</sub>)
-          </span>
-        </Input>
-        <button onClick={calculate} className="main__button">
+        <button className="main__button" type="submit">
           Oblicz
         </button>
-      </div>
+      </form>
       <div className="main__content main__content--results">
         <h2 className="main__heading">Wyniki</h2>
         <div className="main__results">
@@ -113,9 +102,6 @@ const Main = () => {
               (<span>m</span>
               <sub>nz</sub>)
             </span>
-          </Output>
-          <Output val={state.outputVal[7]}>
-            Wartość funkcji celu <span>(F(m))</span>
           </Output>
         </div>
       </div>
