@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './Main.scss';
 import Input from '../Input/Input';
 import Output from '../Output/Output';
@@ -29,6 +32,19 @@ const Main = () => {
         return response.json();
       })
       .then(data => {
+        if (data.error) {
+          toast.error(data.error, {
+            position: 'bottom-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+          });
+
+          return;
+        }
         updateState({
           inputVal: state.inputVal,
           outputVal: Object.values(data),
@@ -105,6 +121,17 @@ const Main = () => {
           </Output>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </main>
   );
 };
