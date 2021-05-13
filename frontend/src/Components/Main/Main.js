@@ -28,7 +28,6 @@ const Main = () => {
       url += `${value}=${state.inputVal[value]}&`;
     }
     url = url.slice(0, -1);
-
     axios
       .get(url)
       .then(response => {
@@ -50,8 +49,6 @@ const Main = () => {
           inputVal: state.inputVal,
           outputVal: response.data,
         });
-        console.log(response.data);
-        console.log(state.outputVal.probability0);
       })
       .catch(err => alert(err));
   };
