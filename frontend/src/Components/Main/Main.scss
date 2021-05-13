@@ -50,3 +50,23 @@
 .Toastify__toast-body {
   font-size: 16px;
 }
+
+#probability {
+  display: block;
+  max-width: 25rem;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #c8c8c8;
+  border-radius: 0.5rem;
+  outline: none;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  height: 40px;
+}
+
+.list-label {
+  font-size: 1.5rem;
+  font-weight: 3600;
+  margin-bottom: 1.3rem;
+}

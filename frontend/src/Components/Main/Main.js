@@ -122,6 +122,19 @@ const Main = () => {
               <sub>nz</sub>)
             </span>
           </Output>
+          <div>
+            <p className="list-label">Prawdopodobieństwo x zgłoszeń</p>
+            <select name="probability" id="probability" disabled>
+              {state.outputVal.probability?.map((probability, index) => {
+                document.getElementById('probability').disabled = false;
+                return (
+                  <option key={probability}>
+                    {index + 1} - {probability.toFixed(2)}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         </div>
       </div>
       <ToastContainer
