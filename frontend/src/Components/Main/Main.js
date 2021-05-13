@@ -49,6 +49,9 @@ const Main = () => {
           inputVal: state.inputVal,
           outputVal: response.data,
         });
+
+        console.log(response.data);
+        console.log(state.outputVal);
       })
       .catch(err => alert(err));
   };
@@ -120,13 +123,13 @@ const Main = () => {
             </span>
           </Output>
           <div>
-            <p className="list-label">Prawdopodobieństwo x zgłoszeń</p>
+            <p className="list-label">Prawdopodobieństwo x zgłoszeń w kolejce</p>
             <select name="probability" id="probability" disabled>
               {state.outputVal.probability?.map((probability, index) => {
                 document.getElementById('probability').disabled = false;
                 return (
                   <option key={probability}>
-                    {index + 1} - {probability.toFixed(2)}
+                    {index + 1} - {probability}
                   </option>
                 );
               })}
