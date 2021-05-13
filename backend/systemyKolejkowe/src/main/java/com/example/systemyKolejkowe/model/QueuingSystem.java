@@ -1,9 +1,12 @@
 package com.example.systemyKolejkowe.model;
 
+import java.util.ArrayList;
+
 public class QueuingSystem {
     private float lambda, mu;
     private int m;
     private float rho, probability0, averageV, averageN, averageM0, averageTt, averageTs, averageMnz;
+    private ArrayList<Float> probability;
     private String error;
 
     public QueuingSystem() {
@@ -18,6 +21,10 @@ public class QueuingSystem {
                     this.m = m;
                     this.rho = calcRho();
                     this.probability0 = calcProbability(0);
+                    probability = new ArrayList<>();
+                    for (int i = 1; i <= (m >= 10? 9 : m); ++i) {
+                        probability.add(calcProbability(i));
+                    }
                     this.averageV = calcAverageV();
                     this.averageTt = calcAverageTt();
                     this.averageN = calcAverageN();
@@ -26,13 +33,13 @@ public class QueuingSystem {
                     this.averageMnz = calcAverageMnz();
                     this.error = "";
                 } else {
-                    this.error = "Błąd: ((lambda / μ) / m) jest większa od 1";
+                    this.error = "Błąd: ((λ / μ) / m) jest większe niż 1";
                 }
             } else {
-                this.error = "Błąd: lambda jest większa od m * μ";
+                this.error = "Błąd: λ jest większa niż m * μ";
             }
         } else {
-            this.error = "Błąd: m jest mniejsze od 1";
+            this.error = "Błąd: m jest mniejsze niż 1";
         }
     }
 
@@ -45,6 +52,8 @@ public class QueuingSystem {
     public float getRho() { return rho; }
 
     public float getProbability0() { return probability0; }
+
+    public ArrayList<Float> getProbability() { return probability; }
 
     public float getAverageV() { return averageV; }
 
@@ -97,11 +106,11 @@ public class QueuingSystem {
         return numeral / nominative;
     }
 
+    private float calcAverageTt() { return averageV / lambda; }
+
     private float calcAverageN() { return averageV + rho; }
 
     private float calcAverageM0() { return rho; }
-
-    private float calcAverageTt() { return averageV / lambda; }
 
     private float calcAverageTs() { return averageN / lambda; }
 

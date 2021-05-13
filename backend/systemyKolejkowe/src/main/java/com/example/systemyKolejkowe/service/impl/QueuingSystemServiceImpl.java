@@ -14,7 +14,7 @@ public class QueuingSystemServiceImpl implements QueuingSystemService {
         QueuingSystem queuingSystem = new QueuingSystem(lambda, mu, m);
 
         return new QueuingSystemDto(
-                queuingSystem.getProbability0(), queuingSystem.getAverageV(), queuingSystem.getAverageN(),
+                queuingSystem.getProbability0(), queuingSystem.getProbability(), queuingSystem.getAverageV(), queuingSystem.getAverageN(),
                 queuingSystem.getAverageM0(), queuingSystem.getAverageTt(), queuingSystem.getAverageTs(),
                 queuingSystem.getAverageMnz(), queuingSystem.getError()
         );
