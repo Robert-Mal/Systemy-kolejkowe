@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import axios from 'axios';
+
 import './Main.scss';
 import Input from '../Input/Input';
 import Output from '../Output/Output';
@@ -25,15 +27,13 @@ const Main = () => {
     for (const value in state.inputVal) {
       url += `${value}=${state.inputVal[value]}&`;
     }
+    url = url.slice(0, -1);
 
-    fetch(url.slice(0, -1))
+    axios
+      .get(url)
       .then(response => {
-        if (!response.ok) throw new Error("Couldn't fetch data");
-        return response.json();
-      })
-      .then(data => {
-        if (data.error) {
-          toast.error(data.error, {
+        if (response.data.error) {
+          toast.error(response.data.error, {
             position: 'bottom-center',
             autoClose: 3000,
             hideProgressBar: false,
@@ -45,10 +45,13 @@ const Main = () => {
 
           return;
         }
+
         updateState({
           inputVal: state.inputVal,
-          outputVal: Object.values(data),
+          outputVal: response.data,
         });
+        console.log(response.data);
+        console.log(state.outputVal.probability0);
       })
       .catch(err => alert(err));
   };
@@ -73,46 +76,46 @@ const Main = () => {
       <div className="main__content main__content--results">
         <h2 className="main__heading">Wyniki</h2>
         <div className="main__results">
-          <Output val={state.outputVal[0]}>
+          <Output val={state.outputVal.probability0}>
             Prawdopodobieństwo, że system jest pusty{' '}
             <span>
               (P<sub>0</sub>)
             </span>
           </Output>
-          <Output val={state.outputVal[1]}>
+          <Output val={state.outputVal.averageV}>
             Średnia długość kolejki{' '}
             <span>
               (<span>v</span>)
             </span>
           </Output>
-          <Output val={state.outputVal[2]}>
+          <Output val={state.outputVal.averageN}>
             Średnia liczba zgłoszeń w systemie{' '}
             <span>
               (<span>n</span>)
             </span>
           </Output>
-          <Output val={state.outputVal[3]}>
+          <Output val={state.outputVal.averageM0}>
             Średnia liczba zgłoszeń w obsłudze{' '}
             <span>
               (<span>m</span>
               <sub>0</sub>)
             </span>
           </Output>
-          <Output val={state.outputVal[4]}>
+          <Output val={state.outputVal.averageTt}>
             Średni czas oczekiwania zgłoszenia w kolejce{' '}
             <span>
               (<span>t</span>
               <sub>t</sub>)
             </span>
           </Output>
-          <Output val={state.outputVal[5]}>
+          <Output val={state.outputVal.averageTs}>
             Średni czas przesycania zgłoszenia w systemie{' '}
             <span>
               (<span>t</span>
               <sub>s</sub>)
             </span>
           </Output>
-          <Output val={state.outputVal[6]}>
+          <Output val={state.outputVal.averageMnz}>
             Średnia liczba nie zajętych kanałów obsługi{' '}
             <span>
               (<span>m</span>
