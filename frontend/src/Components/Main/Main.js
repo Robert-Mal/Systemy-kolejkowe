@@ -125,7 +125,7 @@ const Main = () => {
               {state.outputVal.probability?.map((probability, index) => {
                 document.getElementById('probability').disabled = false;
                 return (
-                  <option key={probability}>
+                  <option key={index}>
                     {index + 1} - {probability}
                   </option>
                 );
