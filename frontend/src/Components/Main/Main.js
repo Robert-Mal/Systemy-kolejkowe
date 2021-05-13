@@ -49,9 +49,6 @@ const Main = () => {
           inputVal: state.inputVal,
           outputVal: response.data,
         });
-
-        console.log(response.data);
-        console.log(state.outputVal);
       })
       .catch(err => alert(err));
   };
